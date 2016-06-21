@@ -3,7 +3,7 @@
   "version": "0.1.1",
   "description": "npm模块开发脚手架项目",
   "main": "lib/",
-  "repository": "http://github.com/slashhuan/module-template",
+  "repository": "git@github.com:slashhuang/npm-module-boilerplate.git",
   "keywords": [
     "core","template"
   ],
@@ -59,7 +59,7 @@
     "webpack-dev-server": "^1.10.1"
   },
   "bugs": {
-    "url": "http://github.com/slashhuang/module-template/issues"
+    "url": "http://github.com:slashhuang/npm-module-boilerplate/issues"
   },
-  "homepage": "http://github.com/slashhuan/module-template"
+  "homepage": "git@github.com:slashhuang/npm-module-boilerplate.git"
 }

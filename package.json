@@ -11,7 +11,7 @@
     "build": "node_modules/.bin/gulp && node_modules/.bin/gulp min",
     "test": "karma start",
     "demo": "node_modules/.bin/gulp demo",
-    "doc": "smartDoc ||node_modules/.bin/smartDoc"
+    "doc": "node_modules/.bin/smartDoc"
   },
   "license": "MIT",
   "contributors": [],

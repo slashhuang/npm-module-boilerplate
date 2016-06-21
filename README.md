@@ -6,7 +6,7 @@
 
 - 方式1: 下载此项目至本地，修改项目名称和package.json里的信息；
 - 方式2:
-    - git remote rm origin
+    - git init
     - git remote add origin git@github.com:slashhuang/npm-module-boilerplate.git
     - git fetch
     - git pull origin master
@@ -14,11 +14,11 @@
 ## Command[命令]
 
 ```
-	#测试	
+	#karma测试	
 	npm run test	
-	#打包	
+	#上线打包	
 	npm run build	
-	#例子演示	
+	#demo测试	
 	npm run demo	
 	#生成文档
 	npm run doc

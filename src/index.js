@@ -1,5 +1,7 @@
 import '../css/index.less';
-module.exports={
-    hello:'hello',
-    world:'world'
-};
+import React,{Component} from 'react';
+export default class Test extends Component{
+    render(){
+        return <div>hello world</div>
+    }
+}

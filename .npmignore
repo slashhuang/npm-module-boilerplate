@@ -23,6 +23,7 @@ neurons
 
 # OS or Editor folders
 .DS_Store
+.npmignore
 ._*
 .cache
 .project

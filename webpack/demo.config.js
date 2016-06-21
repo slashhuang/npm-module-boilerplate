@@ -5,6 +5,7 @@ var extend = require('extend');
 var config = require('../package.json');
 
 module.exports =extend({}, {
+    devtool:'inline-source-map',
     entry:[
         'webpack-dev-server/client?http://localhost:8081',
         'webpack/hot/only-dev-server',

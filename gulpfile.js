@@ -68,10 +68,6 @@ gulp.task('babel', function(done){
       .pipe(gulp.dest('lib'));
 });
 
-gulp.task('watch', function () {
-  gulp.watch(['./lib/**/*.*'], ['demo']);
-});
-
 gulp.task('default', ['babel','require-webpack']);
 gulp.task('test',['karma']);
 gulp.task('demo', ['demo-webpack','open']);

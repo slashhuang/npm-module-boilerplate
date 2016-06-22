@@ -6,7 +6,7 @@
 - eslint代码规范检查
 - karma进行单元测试
 - 适配npmignore，保证仅仅发布必要的代码模块
-- 
+- 开发环境适配sourcemap
 
 ## usage[使用]
 

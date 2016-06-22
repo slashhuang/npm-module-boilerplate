@@ -2,6 +2,12 @@
 
 > 用于快速开发npm模块的脚手架项目
 
+## features[特点]
+- eslint代码规范检查
+- karma进行单元测试
+- 适配npmignore，保证仅仅发布必要的代码模块
+- 
+
 ## usage[使用]
 
 - 方式1: 下载此项目至本地，修改项目名称和package.json里的信息；

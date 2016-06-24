@@ -19,21 +19,21 @@ gulp.task('karma', function (done) {
 
 gulp.task('open', function () {
   gulp.src(__filename)
-      .pipe(open({uri: "http://127.0.0.1:8081/webpack-dev-server/example/index.html"}));
+      .pipe(open({uri: "http://127.0.0.1:8081/example/index.html"}));
 });
 
 gulp.task('demo-webpack', function(done) {
 
+  var config=Object.create(demoWebpackConfig);
+  config.entry.unshift("webpack-dev-server/client?http://localhost:8081/");
   var compiler = webpack(demoWebpackConfig);
-
   var server = new WebpackDevServer(compiler, {
     hot: true,
-    historyApiFallback: false,
     filename: config.name+".js",
     publicPath: "/dist/",
     stats: { colors: true }
   });
-  server.listen(8081, "localhost", function() {});
+  server.listen(8081);
 
 });
 

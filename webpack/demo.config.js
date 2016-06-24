@@ -5,15 +5,15 @@ var extend = require('extend');
 var config = require('../package.json');
 
 module.exports =extend({}, {
-    devtool:'inline-source-map',
+    devtool: "source-map",
     entry:[
-        'webpack-dev-server/client?http://localhost:8081',
-        'webpack/hot/only-dev-server',
+        'webpack/hot/only-dev-server', // "only" prevents reload on syntax errors
         './example/src/index.js'
     ],
     output:{
         path:path.join(process.cwd(),'dist'),
-        filename:config.name+'.js'
+        filename:config.name+'.js',
+        publicPath:'/dist/'
     },
     module:{
         preLoaders: [

@@ -7,15 +7,18 @@
 2. karma进行单元测试
 3. 适配npmignore，保证仅仅发布必要的代码模块
 4. 开发环境适配sourcemap
+5. 增加shim+sham对IE8的支持
 5. npm scripts命令，适配开发、测试、发布
-6. 增加react-hot,实现局部刷新。
+7. 增加react-hot,实现局部刷新
 
 ## dev tips[开发注意点]
-1. react-hot在react部分的热加载是根据state来判断是否更新代码的。
-> 因此当你修改defaultProps等的时候，如果想要看效果，需要刷新。
->  其余类似onClick等的事件，代码照样更新。所以整个开发体验是很不错的
+1. react-hot在react部分的热加载是根据state来判断是否更新UI界面的，实际上你的所有代码已经在后台更新，不需要refresh。
 
-> 其余的类似样式等，还是按照有更改就刷新的逻辑
+2. 在example/index.html已增加了对IE8的支持，如果您的组件需要兼容IE8，请自己添加shim + sham，代码发布不会打包shim+sham。
+
+## shim下的ES语法支持[IE8已支持测试通过的]
+1. 类:  class + static + super
+2. 模块体系
 
 
 ## usage[使用]

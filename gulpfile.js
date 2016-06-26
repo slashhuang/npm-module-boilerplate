@@ -42,18 +42,22 @@ gulp.task('demo-webpack', function(done) {
       if (err) {
           return console.error(err);
       }
-      console.log('========= 热刷新已监听8081端口 =========')
+      console.log('============ 热刷新已监听8081端口 =============')
   });
 });
 
 gulp.task('require-webpack', function(done) {
-    gulp.src(__dirname).
-        pipe(webpack(webpackConfig))
+        webpack(webpackConfig).run(function(err) {
+            if(err) throw new gutil.PluginError("require-webpack", err);
+            done();
+        });
 });
 
 gulp.task('example-webpack',function(done){
-    gulp.src(__dirname).
-        pipe(webpack(demoWebpackConfig))
+        webpack(demoWebpackConfig).run(function(err) {
+        if(err) throw new gutil.PluginError("require-webpack", err);
+        done();
+    });
 });
 
 gulp.task('babel', function(done){

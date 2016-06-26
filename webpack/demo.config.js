@@ -10,9 +10,9 @@ module.exports =extend({}, {
         './example/src/index.js'
     ],
     output:{
-        path:path.join(process.cwd(),'example/js'),
+        path:path.join(process.cwd(),'example/bundle'),
         filename:'bundle.js',
-        publicPath:'/example/js',
+        publicPath:'/example/bundle',
     },
     module:{
         preLoaders: [

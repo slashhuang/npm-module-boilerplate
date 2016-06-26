@@ -89,34 +89,74 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	        _Component.call(this, props, context);
 	        this.state = {
-	            'test': props.test
+	            test: props.test,
+	            arrayData: props.arrayData,
+	            clickHint: props.clickHint
 	        };
 	    }
 
 	    Test.prototype.handleClick = function handleClick() {
-	        debugger;
 	        this.setState({
-	            test: 'clicked'
+	            arrayData: this.state.arrayData.map(function (ele, index) {
+	                return index + 'changed';
+	            }),
+	            clickHint: '已点击'
 	        });
 	    };
 
-	    Test.prototype.componentDidMount = function componentDidMount() {};
-
-	    Test.prototype.render = function render() {
+	    Test.prototype.componentDidMount = function componentDidMount() {
 	        var _this = this;
 
-	        var test = this.state.test;
+	        this.setState({
+	            test: 'component Mounted'
+	        });
+	        var testStr = '欢迎使用npm-module-boilerplate构建您的npm项目\n,发布模块请别忘了修改package.json字段的信息';
+	        var index = 1;
+	        var interval = setInterval(function () {
+	            _this.setState({
+	                test: testStr.slice(0, index)
+	            });
+	            index += 3;
+	            if (testStr == _this.state.test) {
+	                clearInterval(interval);
+	            }
+	        }, 50);
+	    };
+
+	    Test.prototype.render = function render() {
+	        var _this2 = this;
+
+	        var _state = this.state;
+	        var test = _state.test;
+	        var arrayData = _state.arrayData;
+	        var clickHint = _state.clickHint;
 
 	        return _react2['default'].createElement(
 	            'div',
-	            { ref: 'container' },
+	            null,
 	            _react2['default'].createElement(
 	                'div',
-	                { onClick: function () {
-	                        return _this.handleClick();
-	                    }, ref: 'test' },
+	                { className: 'test',
+	                    onClick: function () {
+	                        return _this2.handleClick();
+	                    } },
 	                test
-	            )
+	            ),
+	            _react2['default'].createElement(
+	                'div',
+	                { className: 'child-array',
+	                    onClick: function () {
+	                        return _this2.handleClick();
+	                    } },
+	                clickHint
+	            ),
+	            arrayData.map(function (ele) {
+	                return _react2['default'].createElement(
+	                    'div',
+	                    { key: ele, className: 'child-array' },
+	                    ele
+	                );
+	            })
 	        );
 	    };
 
@@ -124,15 +164,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	        key: 'propTypes',
 	        value: {
 	            /**
-	             * 参数说明
+	             * 默认参数说明
 	             */
-	            test: _react.PropTypes.string.isRequired
+	            test: _react.PropTypes.string.isRequired,
+	            arrayData: _react.PropTypes.array.isRequired
 	        },
 	        enumerable: true
 	    }, {
 	        key: 'defaultProps',
 	        value: {
-	            test: 'test11'
+	            test: 'components initiated',
+	            clickHint: '请点击',
+	            arrayData: [1, 2, 3, 4]
 	        },
 	        enumerable: true
 	    }]);
@@ -142,7 +185,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	exports['default'] = Test;
 	module.exports = exports['default'];
-	/*两种写法都可以自动绑定this*/
 
 /***/ },
 /* 2 */
@@ -179,7 +221,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 	// module
-	exports.push([module.id, "body {\n  font-size: 12px;\n  color: red;\n}\n", ""]);
+	exports.push([module.id, "body {\n  font-size: 12px;\n  color: red;\n}\n.test {\n  padding: 20px;\n  margin: 0 100px;\n  text-align: center;\n  font-size: 20px;\n  background: lightgray;\n  color: orangered;\n}\n.child-array {\n  padding: 20px;\n  margin: 0 100px;\n  text-align: center;\n  font-size: 20px;\n  background: lightgray;\n  color: orangered;\n  background: lightblue;\n  border: 1px solid lightgray;\n}\n", ""]);
 
 	// exports
 

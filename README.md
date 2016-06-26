@@ -48,6 +48,8 @@
 ## Command[命令]
 
 ```
+    # 安装依赖
+    npm install 
 	#karma测试	
 	npm run test	
 	#上线打包	

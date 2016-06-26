@@ -23,7 +23,7 @@
 ```bash
     {
         test: /\.less$/,
-        loader: "style-loader!css-loader!less-loader"
+        loader: ExtractTextPlugin.extract(["css-loader","less-loader"]
     }
 ```
 

@@ -15,14 +15,13 @@ export default class Test extends Component{
         test: PropTypes.string.isRequired
     };
     static defaultProps={
-        test:'test'
+        test:'ter1'
     };
 
     handleClick(){
         this.setState({
-            test:'clicked'
+            test:'cliceeeked'
         });
-
     }
     componentDidMount(){
 
@@ -33,6 +32,9 @@ export default class Test extends Component{
             <div ref='container'>
                 {/*两种写法都可以自动绑定this*/}
                 <div onClick={()=>this.handleClick()} ref='test'>{test}</div>
+                {[1,2,3,4].map((ele)=>{
+                 return    <div key={ele}>{ele}</div>
+                })}
             </div>)
     }
 }

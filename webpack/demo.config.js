@@ -7,13 +7,12 @@ var config = require('../package.json');
 module.exports =extend({}, {
     devtool: "source-map",
     entry:[
-        'webpack/hot/only-dev-server', // "only" prevents reload on syntax errors
         './example/src/index.js'
     ],
     output:{
-        path:path.join(process.cwd(),'dist'),
+        path:path.join(process.cwd(),'example/js'),
         filename:config.name+'.js',
-        publicPath:'/dist/'
+        publicPath:'/example/js',
     },
     module:{
         preLoaders: [
@@ -26,7 +25,7 @@ module.exports =extend({}, {
         loaders:[
             {
                 test: /\.jsx?$/,
-                loaders: ['react-hot', 'babel'],
+                loaders: ['babel'],
                 exclude: /node_modules/
             },
             {
@@ -48,7 +47,7 @@ module.exports =extend({}, {
         ]
     },
     plugins: [
-        new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoErrorsPlugin()
+        new webpack.HotModuleReplacementPlugin()
+        //new webpack.NoErrorsPlugin()
     ]
 });

@@ -8,7 +8,7 @@ var WebpackDevServer = require("webpack-dev-server");
 var open = require('gulp-open');
 
 var babel = require('gulp-babel');
-var config = require('./package.json');
+var pkgConfig = require('./package.json');
 
 gulp.task('karma', function (done) {
   new Server({
@@ -19,47 +19,42 @@ gulp.task('karma', function (done) {
 
 gulp.task('open', function () {
   gulp.src(__filename)
-      .pipe(open({uri: "http://127.0.0.1:8081/example/index.html"}));
+      .pipe(open({uri: "http://127.0.0.1:8081/webpack-dev-server/example/index.html"}));
 });
 
 gulp.task('demo-webpack', function(done) {
-
   var config=Object.create(demoWebpackConfig);
-  config.entry.unshift("webpack-dev-server/client?http://localhost:8081/");
-  var compiler = webpack(demoWebpackConfig);
+  config.entry.unshift(
+      "webpack-dev-server/client?http://localhost:8081/",
+      'webpack/hot/dev-server'//语法错误，也reload
+  );
+    //开发环境添加react-hot
+  config.module.loaders[0].loaders=[
+          'react-hot',//keep it mounted, preserving the state
+          'babel'];
+  var compiler = webpack(config);
   var server = new WebpackDevServer(compiler, {
     hot: true,
-    filename: config.name+".js",
-    publicPath: "/dist/",
+    filename: pkgConfig.name+".js",
+    publicPath: config.output.publicPath,
     stats: { colors: true }
   });
-  server.listen(8081);
-
+  server.listen(8081,'localhost',function(err){
+      if (err) {
+          return console.error(err);
+      }
+      console.log('========= 热刷新已监听8081端口 =========')
+  });
 });
 
 gulp.task('require-webpack', function(done) {
-  webpack(webpackConfig).run(function(err, stats) {
-    if(err) throw new gutil.PluginError("require-webpack", err);
-    gutil.log("[webpack]", stats.toString({
-    }));
-    done();
-  });
+    gulp.src(__dirname).
+        pipe(webpack(webpackConfig))
 });
 
-gulp.task('min-webpack', function(done) {
-
-  var wbpk = Object.create(webpackConfig);
-  wbpk.output.filename = config.name+'.min.js';
-  wbpk.plugins = [
-    new webpack.optimize.UglifyJsPlugin()
-  ];
-  webpack(wbpk).run(function(err, stats) {
-    if(err) throw new gutil.PluginError("min-webpack", err);
-    gutil.log("[webpack]", stats.toString({
-      // output options
-    }));
-    done();
-  });
+gulp.task('example-webpack',function(done){
+    gulp.src(__dirname).
+        pipe(webpack(demoWebpackConfig))
 });
 
 gulp.task('babel', function(done){
@@ -68,7 +63,6 @@ gulp.task('babel', function(done){
       .pipe(gulp.dest('lib'));
 });
 
-gulp.task('default', ['babel','require-webpack']);
+gulp.task('default', ['babel','require-webpack','example-webpack']);
 gulp.task('test',['karma']);
 gulp.task('demo', ['demo-webpack','open']);
-gulp.task('min',['min-webpack']);

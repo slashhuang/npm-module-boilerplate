@@ -1,13 +1,13 @@
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory();
+		module.exports = factory(require("react"), require("react/lib/ReactDOM"));
 	else if(typeof define === 'function' && define.amd)
-		define([], factory);
+		define(["react", "react/lib/ReactDOM"], factory);
 	else {
-		var a = factory();
+		var a = typeof exports === 'object' ? factory(require("react"), require("react/lib/ReactDOM")) : factory(root["React"], root["ReactDom"]);
 		for(var i in a) (typeof exports === 'object' ? exports : root)[i] = a[i];
 	}
-})(this, function() {
+})(this, function(__WEBPACK_EXTERNAL_MODULE_6__, __WEBPACK_EXTERNAL_MODULE_8__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -63,12 +63,86 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
+	exports.__esModule = true;
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 	__webpack_require__(2);
 
-	module.exports = {
-	    hello: 'hello',
-	    world: 'world'
-	};
+	var _react = __webpack_require__(6);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactDom = __webpack_require__(7);
+
+	var Test = (function (_Component) {
+	    _inherits(Test, _Component);
+
+	    function Test(props, context) {
+	        _classCallCheck(this, Test);
+
+	        _Component.call(this, props, context);
+	        this.state = {
+	            'test': props.test
+	        };
+	    }
+
+	    Test.prototype.handleClick = function handleClick() {
+	        debugger;
+	        this.setState({
+	            test: 'clicked'
+	        });
+	    };
+
+	    Test.prototype.componentDidMount = function componentDidMount() {};
+
+	    Test.prototype.render = function render() {
+	        var _this = this;
+
+	        var test = this.state.test;
+
+	        return _react2['default'].createElement(
+	            'div',
+	            { ref: 'container' },
+	            _react2['default'].createElement(
+	                'div',
+	                { onClick: function () {
+	                        return _this.handleClick();
+	                    }, ref: 'test' },
+	                test
+	            )
+	        );
+	    };
+
+	    _createClass(Test, null, [{
+	        key: 'propTypes',
+	        value: {
+	            /**
+	             * 参数说明
+	             */
+	            test: _react.PropTypes.string.isRequired
+	        },
+	        enumerable: true
+	    }, {
+	        key: 'defaultProps',
+	        value: {
+	            test: 'test11'
+	        },
+	        enumerable: true
+	    }]);
+
+	    return Test;
+	})(_react.Component);
+
+	exports['default'] = Test;
+	module.exports = exports['default'];
+	/*两种写法都可以自动绑定this*/
 
 /***/ },
 /* 2 */
@@ -390,6 +464,27 @@ return /******/ (function(modules) { // webpackBootstrap
 			URL.revokeObjectURL(oldSrc);
 	}
 
+
+/***/ },
+/* 6 */
+/***/ function(module, exports) {
+
+	module.exports = __WEBPACK_EXTERNAL_MODULE_6__;
+
+/***/ },
+/* 7 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	module.exports = __webpack_require__(8);
+
+
+/***/ },
+/* 8 */
+/***/ function(module, exports) {
+
+	module.exports = __WEBPACK_EXTERNAL_MODULE_8__;
 
 /***/ }
 /******/ ])

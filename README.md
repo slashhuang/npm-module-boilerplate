@@ -12,9 +12,11 @@
 7. 增加react-hot,实现局部刷新
 
 ## dev tips[开发注意点]
-1. react-hot在react部分的热加载是根据state来判断是否更新UI界面的，实际上你的所有代码已经在后台更新，不需要refresh。
+1. UI更新: react-hot在react部分的热加载是根据state来判断是否更新UI界面的，实际上你的所有代码已经在后台更新，不需要refresh。
 
-2. 在example/index.html已增加了对IE8的支持，如果您的组件需要兼容IE8，请自己添加shim + sham，代码发布不会打包shim+sham。
+2. IE8: 在example/index.html已增加了对IE8的支持，如果您的组件需要兼容IE8，请自己添加shim + sham，代码发布不会打包shim+sham。
+
+3. 网络请求: 如果已经引入jQuery库了，则用$.ajax,否则可以采用fetch来做。
 
 ## 添加shim+sham下的IE8对ES6/7语法支持[以下为测试通过的]
 1. 类:  class + static + super

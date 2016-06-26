@@ -16,15 +16,18 @@
 
 2. 在example/index.html已增加了对IE8的支持，如果您的组件需要兼容IE8，请自己添加shim + sham，代码发布不会打包shim+sham。
 
-## shim下的ES语法支持[IE8已支持测试通过的]
+## 添加shim+sham下的IE8对ES6/7语法支持[以下为测试通过的]
 1. 类:  class + static + super
-2. 模块体系
+2. 模块体系: export export default import module exports
+3. 变量声明: let const 
+4. 解构赋值
+5. promise【在引入babel-polyfill下的情况下可用。但是会进入catch错误代码块】
 
 
 ## usage[使用]
 
 - 方式1: 下载此项目至本地
-- 方式2:
+- 方式2: 
     - git init
     - git remote add origin git@github.com:slashhuang/npm-module-boilerplate.git
     - git fetch

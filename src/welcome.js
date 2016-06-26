@@ -1,72 +1,64 @@
-/**
- * Created by slashhuang on 16/6/26.
- */
 import '../less/index.less';
 import React,{Component,PropTypes} from 'react';
 import {findDOMNode} from 'react-dom';
+import  'whatwg-fetch';
 export default class Test extends Component{
     constructor(props,context){
         super(props,context);
         this.state={
             test:props.test,
-            arrayData:props.arrayData,
             clickHint:props.clickHint
         }
     }
     static propTypes = {
         /**
-         * 默认参数说明
+         * 参数说明
          */
-        test: PropTypes.string.isRequired,
-        arrayData: PropTypes.array.isRequired
+        test: PropTypes.string.isRequired
     };
     static defaultProps={
         test:'components initiated',
-        clickHint:'请点击',
-        arrayData:[1,2,3,4]
+        clickHint:'请点击执行AJAX网络请求'
     };
 
     handleClick(){
+        if(this.state.avatar){return };
         this.setState({
-            arrayData:this.state.arrayData.map((ele,index)=>{
-                return index+'changed'
-            }),
-            clickHint:'已点击==^_^'
+            clickHint:'正连接到api.github.com'
         });
+        let fetchUrl = 'https://api.github.com/users/iwfe';
+        fetch(fetchUrl,{method: 'GET'})
+            .then((response)=>response.json())
+            .then((res)=> {
+                this.setState({
+                    avatar:res['avatar_url'],
+                    clickHint:'你已访问'+res['login']+'的github-api信息',
+                })}).catch((err)=>{alert('error');alert(JSON.stringify(err))})
     }
     componentDidMount(){
-        this.setState({
-            test:'component Mounted'
-        });
-        var testStr = '欢迎使用npm-module-boilerplate构建您的npm项目\n,发布模块请别忘了修改package.json字段的信息';
-        var index = 1;
-        var interval = setInterval(()=> {
+        let testStr = '欢迎使用npm-module-boilerplate构建您的npm项目\n,发布模块请别忘了修改package.json字段的信息';
+        let index = 1;
+        let interval = setInterval(()=> {
                 this.setState({
                     test:testStr.slice(0,index)
                 });
-                index+=3;
-                if(testStr==this.state.test){
-                    clearInterval(interval);
-                }
-            }
-            ,50);
+                index+=4;
+                testStr==this.state.test&&clearInterval(interval)
+            },50);
     }
     render(){
-        let {test,arrayData,clickHint} = this.state;
+        let {test,clickHint,avatar} = this.state;
         return (
             <div>
                 <div className='test'
                      onClick={()=>this.handleClick()}>
                     {test}
                 </div>
-                <div className='child-array'
+                <div className='info'
                      onClick={()=>this.handleClick()}>
                     {clickHint}
+                    {avatar?<img src={avatar}/>:null}
                 </div>
-                {
-                    arrayData.map((ele)=>{
-                        return<div key={ele} className='child-array'>{ele}</div>})
-                }
             </div>)
     }
 }

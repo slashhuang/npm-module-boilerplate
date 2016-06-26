@@ -9,10 +9,9 @@
     "template"
   ],
   "scripts": {
-    "build": "node_modules/.bin/gulp && node_modules/.bin/gulp min",
+    "build": "gulp",
     "test": "karma start",
-    "demo": "node_modules/.bin/gulp demo",
-    "doc": "node_modules/.bin/smartDoc"
+    "demo": "gulp demo"
   },
   "license": "MIT",
   "contributors": [],

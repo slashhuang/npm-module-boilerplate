@@ -11,7 +11,7 @@ module.exports =extend({}, {
     ],
     output:{
         path:path.join(process.cwd(),'example/js'),
-        filename:config.name+'.js',
+        filename:'bundle.js',
         publicPath:'/example/js',
     },
     module:{

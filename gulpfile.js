@@ -8,7 +8,6 @@ var WebpackDevServer = require("webpack-dev-server");
 var open = require('gulp-open');
 
 var babel = require('gulp-babel');
-var pkgConfig = require('./package.json');
 
 gulp.task('karma', function (done) {
   new Server({
@@ -35,7 +34,7 @@ gulp.task('demo-webpack', function(done) {
   var compiler = webpack(config);
   var server = new WebpackDevServer(compiler, {
     hot: true,
-    filename: pkgConfig.name+".js",
+    filename: config.output.publicPath.filename+".js",
     publicPath: config.output.publicPath,
     stats: { colors: true }
   });

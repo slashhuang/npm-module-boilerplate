@@ -47,7 +47,7 @@ module.exports =extend({}, {
         ]
     },
     plugins: [
-        new webpack.HotModuleReplacementPlugin()
-        //new webpack.NoErrorsPlugin()
+        new webpack.HotModuleReplacementPlugin(),
+        new webpack.NoErrorsPlugin()
     ]
 });

@@ -18,6 +18,8 @@
 
 3. 网络请求: 如果已经引入jQuery库了，则用$.ajax,否则可以采用fetch来做。
 
+4. sass或者less，可以按照喜好自己选择。由于node-sass包安装太慢，目前采用的是less
+
 ## 添加shim+sham下的IE8对ES6/7语法支持[以下为测试通过的]
 1. 类:  class + static + super
 2. 模块体系: export export default import module exports

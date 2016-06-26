@@ -20,11 +20,13 @@
 
 4. sass或者less，可以按照喜好自己选择。由于node-sass包安装太慢，目前采用的是less，less文件未抽出。
 对于使用sass的项目，需要在开发环境的webpack的module里面添加如下代码，兼容less打包。
-```{
-    test: /\.less$/,
-    loader: "style-loader!css-loader!less-loader"
-},
+```bash
+    {
+        test: /\.less$/,
+        loader: "style-loader!css-loader!less-loader"
+    }
 ```
+
 ## 添加shim+sham下的IE8对ES6/7语法支持[以下为测试通过的]
 1. 类:  class + static + super
 2. 模块体系: export export default import module exports

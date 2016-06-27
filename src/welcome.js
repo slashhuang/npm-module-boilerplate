@@ -1,4 +1,3 @@
-import '../less/index.less';
 import React,{Component,PropTypes} from 'react';
 import {findDOMNode} from 'react-dom';
 import  'whatwg-fetch';
@@ -32,13 +31,13 @@ export default class Test extends Component{
             .then((res)=> {
                 this.setState({
                     avatar:res['avatar_url'],
-                    clickHint:'你已访问'+res['login']+'的github-api信息',
+                    clickHint:'你已访问'+res['login']+'的github-api信息'
                 })}).catch((err)=>{alert('error');alert(JSON.stringify(err))})
     }
     componentDidMount(){
         let testStr = '欢迎使用npm-module-boilerplate构建您的npm项目\n,发布模块请别忘了修改package.json字段的信息';
         let index = 1;
-        let interval = setInterval(()=> {
+        var interval = setInterval(()=> {
                 this.setState({
                     test:testStr.slice(0,index)
                 });

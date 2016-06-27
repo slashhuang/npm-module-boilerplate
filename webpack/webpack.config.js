@@ -53,7 +53,7 @@ module.exports ={
             },
             {
                 test: /\.less$/,
-                loader: ExtractTextPlugin.extract(["css-loader","less-loader"])
+                loaders: ["css-loader","less-loader"]
             },
             { test: /\.html$/, loader: "handlebars-loader" },
             {
@@ -61,8 +61,5 @@ module.exports ={
                 loader: 'url?limit=35000'
             }
         ]
-    },
-    plugins:[
-        new ExtractTextPlugin('index.css')
-    ]
+    }
 };

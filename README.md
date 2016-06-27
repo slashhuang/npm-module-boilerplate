@@ -19,7 +19,7 @@
 3. 网络请求: 如果已经引入jQuery库了，则用$.ajax,否则可以采用fetch来做。
 
 4. sass或者less，可以按照喜好自己选择。由于node-sass包安装太慢，目前采用的是less，less文件未抽出。
-对于使用sass的项目，需要在开发环境的webpack的module里面添加如下代码，兼容less打包。
+对于开发项目，需要在开发环境的webpack的module里面添加如下代码，兼容less打包。
 ```bash
     {
         test: /\.less$/,

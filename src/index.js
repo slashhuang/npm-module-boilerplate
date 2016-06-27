@@ -1,4 +1,3 @@
-import 'babel-polyfill'
 import Welcome from './welcome.js';
-require('../example/public.less');
+import '../less/index.less';
 module.exports=Welcome;

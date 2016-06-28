@@ -1,6 +1,6 @@
 # npm-module-boilerplate
 
-> 用于快速开发react的npm模块的脚手架项目
+> 用于快速开发react组件的前端npm模块的脚手架项目
 
 ## features[特点]
 1. eslint代码规范检查
@@ -32,7 +32,8 @@
 2. 模块体系: export export default import module exports
 3. 变量声明: let const 
 4. 解构赋值
-5. promise【在引入babel-polyfill下的情况下可用。但是会进入catch错误代码块】
+5. promise【在引入es6-promise下的情况下可用】
+6. fetch api请使用[ie8-fetch](https://github.com/camsong/fetch-ie8)
 
 
 ## usage[使用]
@@ -57,5 +58,8 @@
 	#demo测试	
 	npm run demo	
 ```
+
+## demo[示例，兼容IE8]
+![示例](./example/assets/ie8.gif)
 
 

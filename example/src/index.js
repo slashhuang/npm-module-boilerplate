@@ -1,10 +1,6 @@
 require('../public.less');
 import{
-    Welcome,
-    Li,
-    Right,
-    Left,
-    Middle
+    Welcome
 } from '../../src/index.js';
 import React,{Component,PropTypes} from 'react';
 import {findDOMNode,render} from 'react-dom';
@@ -16,34 +12,8 @@ export default class Test extends Component {
     static defaultProps={
         data:'左边'
     };
-    renderLeft(){
-        return <Li><Left/></Li>
-    }
-    renderMiddle(){
-        return <Li><Left/><Middle/></Li>
-    }
-    renderRight(){
-        return <Li><Left/><Middle/><Right/></Li>
-    }
 
-    render(){
-        return (
-            <div>
-                <Welcome/>
-                <ul className='ul-container'>
-            {
-                this.renderLeft()
-            }
-            {
-                this.renderMiddle()
-            }
-            {
-                this.renderRight()
-            }
-        </ul>
-                </div>
-                )
-    }
+    render(){return <Welcome/>}
 };
 
 render(<Test/>,document.getElementById('root'));
